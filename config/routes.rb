@@ -1,57 +1,6 @@
 Rails.application.routes.draw do
 
-  namespace :admin do
-    get 'orders/show'
-  end
-  namespace :admin do
-    get 'customers/index'
-    get 'customers/show'
-    get 'customers/edit'
-  end
-  namespace :admin do
-    get 'genres/index'
-    get 'genres/edit'
-  end
-  namespace :admin do
-    get 'scores/new'
-    get 'scores/index'
-    get 'scores/show'
-    get 'scores/edit'
-  end
-  namespace :admin do
-    get 'homes/top'
-  end
-  namespace :public do
-    get 'requests/new'
-    get 'requests/index'
-    get 'requests/edit'
-  end
-  namespace :public do
-    get 'favorites/index'
-  end
-  namespace :public do
-    get 'orders/new'
-    get 'orders/index'
-    get 'orders/show'
-    get 'orders/complete'
-  end
-  namespace :public do
-    get 'customers/show'
-    get 'customers/edit'
-    get 'customers/quit'
-  end
-  namespace :public do
-    get 'cart_scores/index'
-  end
-  namespace :public do
-    get 'scores/index'
-    get 'scores/show'
-  end
-  namespace :public do
-    get 'homes/top'
-    get 'homes/about'
-  end
-  # 顧客用
+  # 会員用
 # URL /customers/sign_in ...
   devise_for :customers,skip: [:passwords], controllers: {
     registrations: "public/registrations",
@@ -63,5 +12,45 @@ Rails.application.routes.draw do
   devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
     sessions: "admin/sessions"
   }
+  
+  # 会員側のルーティング設定
+  scope module: :public do
+    root to: "homes#top"
+    get "about" => "homes#about"
+    
+    get "/customers/my_page" => "customers#show"
+    get 'customers/information/edit' => 'customers#edit'
+    patch 'customers/information' => 'customers#update'
+    get 'customers/quit' => 'customers#quit'
+    patch 'customers/withdraw' => 'customers#withdraw'
+    
+    resources :scores, only: [:index,:show]
+    resources :cart_scores do
+      member do
+        delete "destroy_all"
+      end
+    end
+  
+    resources :orders, only: [:new,:index,:show,:create]
+    post "/orders/confirm" => "orders#confirm"
+    get "/orders/complete" => "orders#complete"
+    
+    resources :favorites, only: [:create,:index,:destroy]
+    resources :requests, only: [:new,:create,:index,:edit,:update,:destroy]
+    
+  end
+  
+  
+  # 管理者側のルーティング設定
+  namespace :admin do
+  
+  get "" => "scores#index"
+  
+  resources :scores, only: [:new,:create,:show,:edit,:update]
+  resources :genres, only: [:index,:create,:edit,:update]
+  resources :customers, only: [:index,:show,:edit,:update]
+  resources :orders, only: [:show, :update]
+  
+  end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
