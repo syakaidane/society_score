@@ -16,7 +16,7 @@ class Score < ApplicationRecord
       file_path = Rails.root.join("app/assets/images/no_image.jpg")
       image.attach(io: File.open(file_path), filename: "default-image.jpg", content_type: "image/jpeg")
     end
-    item_image.variant(resize_to_fill: [width, height], gravity: :center).processed
+    score_image.variant(resize_to_fill: [width, height], gravity: :center).processed
   end
   
   def with_tax

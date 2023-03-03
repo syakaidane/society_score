@@ -1,5 +1,9 @@
 <h4>商品一覧</h4>
 
+<%= link_to new_admin_score_path do %>
+  <button>＋</button>
+<% end %>
+
 <table>
   <thead>
     <tr>
@@ -7,7 +11,6 @@
       <th>曲名</th>
       <th>ジャンル</th>
       <th>税抜価格</th>
-      <th>販売状況</th>
     </tr>
   </thead>
   <tbody>
@@ -15,15 +18,8 @@
       <tr>
         <td><%= score.id %></td>
         <td><%= link_to score.score_name, admin_score_path(score.id) %></td>
-        <td><%= score.without_tax.to_s(:delimited)%></td>
         <td><%= score.genre.genre_name %></td>
-        <td>
-          <% if score.sale_status == true %>
-            <P>販売中</p>
-          <% else %>
-            <P>販売停止中</p>
-          <% end %>
-        </td>
+        <td><%= score.without_tax.to_s(:delimited)%></td>
       </tr>
     <% end %>
   </tbody>

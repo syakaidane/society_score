@@ -34,10 +34,16 @@ class Admin::ScoresController < ApplicationController
     end
   end
   
-private
+  def destroy
+    score = Score.find(params[:id])
+    score.destroy
+    redirect_to '/admin'
+  end
+  
+  private
   
   def score_params
-    params.require(:score).permit(:score_image, :genre_id, :score_name, :score_caption, :without_tax, :sale_status)
+    params.require(:score).permit(:score_image, :genre_id, :score_name, :score_caption, :without_tax)
   end
   
 end

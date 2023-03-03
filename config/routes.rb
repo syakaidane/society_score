@@ -46,7 +46,7 @@ Rails.application.routes.draw do
   
   get "" => "scores#index"
   
-  resources :scores, only: [:new,:create,:show,:edit,:update]
+  resources :scores, only: [:new,:create,:show,:edit,:update,:destroy]
   resources :genres, only: [:index,:create,:edit,:update,:destroy]
   resources :customers, only: [:index,:show,:edit,:update]
   resources :orders, only: [:index,:show,:update]

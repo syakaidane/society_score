@@ -1,2 +1,12 @@
-<h1>Public::Scores#show</h1>
-<p>Find me in app/views/public/scores/show.html.erb</p>
+<%= render 'sidebar', genres: @genres %>
+
+<%= image_tag @score.get_image(300, 400) %>
+
+<h3><%= @score.score_name %></h3>
+
+<h5><%= @score.score_caption %></h5>
+
+<h3 class= "mt-5">
+  ¥ <%= (@score.without_tax*1.1).floor.to_s(:delimited) %>
+  <span class= "tax">(税込)</span>
+</h3>

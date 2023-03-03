@@ -1,5 +1,5 @@
 <h4>楽譜情報編集</h4>
-<%= form_with model: @score, url: admin_item_path(@score.id) do |f| %>
+<%= form_with model: @score, url: admin_score_path(@score.id) do |f| %>
   <table>
     <tr>
       <th><%= f.label :score_image, "画像" %></th>
@@ -21,15 +21,12 @@
       <th><%= f.label :without_tax, "税抜価格" %></th>
       <td><%= f.number_field :without_tax, :placeholder => "1000" %>円</td>
     </tr>
-    <tr>
-      <th><%= f.label :sale_status, "販売ステータス" %></th>
-      <td>
-        <%= f.radio_button :sale_status, :true %>
-        <%= f.label :sale_status_sale, "販売中" %>
-        <%= f.radio_button :sale_status, :false %>
-        <%= f.label :sale_status_stop_sale, "販売停止中" %>
-      </td>
-    </tr>
   </table>
   <%= f.submit "変更を保存" %>
+<% end %>
+
+<%= link_to admin_score_path(@score.id), method: :delete, "data-confirm" => "本当に削除しますか？" do %>
+  <button>
+    削除する
+  </button>
 <% end %>

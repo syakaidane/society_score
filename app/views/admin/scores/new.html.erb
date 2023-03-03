@@ -22,15 +22,6 @@
       <th><%= f.label :without_tax, "税抜価格" %></th>
       <td><%= f.text_field :without_tax, :placeholder => "300" %>円</td>
     </tr>
-    <tr>
-      <th><%= f.label :sale_status, "販売ステータス" %></th>
-      <td>
-        <%= f.radio_button :sale_status, :true %>
-        <%= f.label :sale_status_sale, "販売中" %>
-        <%= f.radio_button :sale_status, :false %>
-        <%= f.label :sale_status_stop_sale, "販売停止中" %>
-      </td>
-    </tr>
   </table>
   <%= f.submit "新規登録" %>
 <% end %>
