@@ -34,8 +34,10 @@ class Admin::ScoresController < ApplicationController
     end
   end
   
+private
+  
   def score_params
-    params.require(:item).permit(:score_image, :genre_id, :score_name, :score_caption, :without_tax, :sale_status)
+    params.require(:score).permit(:score_image, :genre_id, :score_name, :score_caption, :without_tax, :sale_status)
   end
   
 end
