@@ -10,6 +10,7 @@ class Public::ScoresController < ApplicationController
 
   def show
     @score = Score.find(params[:id])
+    @cart_score = CartScore.new
     @genres = Genre.all
       if params[:genre_id].present?
         @genre = Genre.find(params[:genre_id])

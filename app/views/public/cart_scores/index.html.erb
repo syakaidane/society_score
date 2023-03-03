@@ -1,2 +1,38 @@
-<h1>Public::CartScores#index</h1>
-<p>Find me in app/views/public/cart_scores/index.html.erb</p>
+<h2>ショッピングカート</h2>
+
+<%= link_to destroy_all_cart_score_path(current_customer.id), method: :delete do %>
+  <button>カートを空にする</button>
+<% end %>
+
+<table>
+  <thead>
+    <tr>
+      <th>商品名</th>
+      <th>単価(税込)</th>
+      <th>小計</th>
+      <th></th>
+    </tr>
+  </thead>
+    <% total = 0 %>
+  <% if current_customer.cart_scores.present? %>
+
+  <tbody>
+    <% @cart_scores.each do |cart_score| %>
+      <tr>
+        <td>
+          <%= cart_score.score.score_name %>
+        </td>
+        <td><%= (cart_score.score.without_tax*1.10).to_i %></td>
+        <td>
+          <% subtotal = ((cart_score.score.without_tax)*1.10).to_i %>
+          <%= subtotal %>
+        </td>
+        <td>
+          <%= link_to "削除", cart_scores_path, method: :delete %>
+        </td>
+      </tr>
+        <% total += subtotal %>
+    <% end %>
+  </tbody>
+  <% end %>
+</table>

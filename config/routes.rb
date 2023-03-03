@@ -25,6 +25,8 @@ Rails.application.routes.draw do
     patch 'customers/withdraw' => 'customers#withdraw'
     
     resources :scores, only: [:index,:show]
+    
+    delete '/cart_scores' => 'cart_scores#destroy'
     resources :cart_scores do
       member do
         delete "destroy_all"
