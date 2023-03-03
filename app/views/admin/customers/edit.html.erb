@@ -1,2 +1,45 @@
-<h1>Admin::Customers#edit</h1>
-<p>Find me in app/views/admin/customers/edit.html.erb</p>
+<h2><%= @customer.last_name %><%= @customer.first_name %>さんの会員情報編集</h2>
+<table>
+  <tbody>
+    <tr>
+      <td>会員ID</td>
+      <td><%= @customer.id %></td>
+    </tr>
+    <%= form_with model: @customer, url: admin_customer_path, local:true do |f| %>
+    <tr>
+      <td><%= f.label :"氏名" %></td>
+      <td><%= f.text_field :last_name %></td>
+      <td><%= f.text_field :first_name %></td>
+    </tr>
+      <td><%= f.label :"フリガナ" %></td>
+      <td><%= f.text_field :kana_last %></td>
+      <td><%= f.text_field :kana_first %></td>
+    </tr>
+    <tr>
+      <td><%= f.label :"郵便番号" %></td>
+      <td><%= f.text_field :post_code %></td>
+    </tr>
+    <tr>
+      <td><%= f.label :"住所" %></td>
+      <td><%= f.text_field :address %></td>
+    </tr>
+    <tr>
+      <td><%= f.label :"電話番号(ハイフンなし)" %></td>
+      <td><%= f.text_field :telephone %></td>
+    </tr>
+    <tr>
+      <td><%= f.label :"メールアドレス" %></td>
+      <td><%= f.email_field :email, autofocus: true, autocomplete: "email" %></td>
+    </tr>
+    <tr>
+      <td><%= f.label :"会員ステータス" %></td>
+      <td><%= f.radio_button :is_deleted, false, checked: true %><%= f.label :is_deleted, "有効" %></td>
+      <td><%= f.radio_button :is_deleted, true %><%= f.label :is_deleted, "退会" %></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><%= f.submit "変更を保存" %></td>
+    <% end %>
+    </tr>
+  </tboby>
+</table>

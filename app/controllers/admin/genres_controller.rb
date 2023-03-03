@@ -29,8 +29,14 @@ class Admin::GenresController < ApplicationController
       render "edit"
     end
   end
+  
+  def destroy
+    genre = Genre.find(params[:id])
+    genre.destroy
+    redirect_to '/admin/genres'
+  end
 
-private
+  private
 
   def genre_params
     params.require(:genre).permit(:genre_name)

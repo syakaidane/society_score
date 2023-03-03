@@ -49,7 +49,7 @@ Rails.application.routes.draw do
   resources :scores, only: [:new,:create,:show,:edit,:update]
   resources :genres, only: [:index,:create,:edit,:update,:destroy]
   resources :customers, only: [:index,:show,:edit,:update]
-  resources :orders, only: [:show, :update]
+  resources :orders, only: [:index,:show,:update]
   resources :requests, only: [:index,:edit,:update]
   end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

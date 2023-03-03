@@ -16,3 +16,5 @@
     </tr>
   </table>
 <% end %>
+
+<%= link_to "削除する", admin_genre_path(@genre.id), method: :delete, "data-confirm" => "本当に削除しますか？" %>

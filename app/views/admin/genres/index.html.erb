@@ -1,11 +1,12 @@
 <h2>ジャンル作成</h2>
+<%= render 'layouts/errors', obj: @genre %>
 
 <%= form_with model: [:admin, @genre] do |f| %>
 <table>
   <tr>
     <p>
       <b><%= f.label :"ジャンル名" %> </b>
-      <%= f.text_field :genre_name, :placeholder => "ジャンル名" %> 
+      <%= f.text_field :genre_name, :placeholder => "ジャンル名" %>
       <%= f.submit "新規登録" %>
     </p>
   </tr>
@@ -19,6 +20,7 @@
     <tr>
       <th>ジャンル</th>
       <th></th>
+      <th></th>
     </tr>
   </thead>
   <tbody>
@@ -26,6 +28,7 @@
     <tr>
       <td><%= genre.genre_name %></td>
       <td><%= link_to "編集する", edit_admin_genre_path(genre.id) %></td>
+      <td><%= link_to "削除する", admin_genre_path(genre.id), method: :delete, "data-confirm" => "本当に削除しますか？" %></td>
     </tr>
   <% end %>
   </tbody>
