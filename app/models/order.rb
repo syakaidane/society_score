@@ -5,4 +5,9 @@ class Order < ApplicationRecord
   
   enum payment_method: {credit_card:0, transfer:1}
   
+  def with_tax
+    tax = 1.1
+    (without_tax * tax).floor
+  end
+  
 end

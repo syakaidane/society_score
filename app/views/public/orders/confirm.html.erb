@@ -1,0 +1,49 @@
+<h2>注文情報確認</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>商品名</th>
+      <th>単価(税込)</th>
+      <th>小計</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% sum_of_price= 0 %>
+    <% @cart_scores.each do |cart_score| %>
+    <tr>
+      <td>
+        <%= image_tag cart_score.score.get_image(150, 200) %>
+        <%= cart_score.score.score_name %>
+      </td>
+      <td><%= cart_score.score.with_tax.to_i %></td>
+      <td>
+        <% subtotal = cart_score.score.with_tax.to_i %>
+        <%= subtotal %>
+        <% sum_of_price += subtotal %>
+      </td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= form_with model: @order, url: orders_path, local: true do |f| %>
+<table>
+  <tbody>
+    <tr>
+      <td>合計</td>
+      <td>
+        <%= sum_of_price %>
+        <%= f.hidden_field :total, :value => sum_of_price %>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<div>支払方法</div>
+  <%= @order.payment_method_i18n %>
+  <%= f.hidden_field :payment_method, :value => @order.payment_method %><br>
+</div>
+<%= f.submit "注文を確定する" %>
+
+<% end %>

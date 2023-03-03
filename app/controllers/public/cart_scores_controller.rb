@@ -20,8 +20,8 @@ class Public::CartScoresController < ApplicationController
   end
   
   def destroy
-    @cart_score = CartScore.find(params[:id])
-    @cart_score.destroy
+    cart_score = CartScore.find(params[:id])
+    cart_score.destroy
     @cart_scores = CartScore.all
     redirect_to cart_scores_path
   end
