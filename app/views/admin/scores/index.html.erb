@@ -1,27 +1,41 @@
-<h4>商品一覧</h4>
+<div class= "container">
+  <div class= "row justify-content-start">
+    
+    <div class= "col-md-2 my-5">
+      <%= render "layouts/sidebar", genres: @genres %>
+    </div>
+    
+    <div class= "col-md-10 my-5">
 
-<%= link_to new_admin_score_path do %>
-  <button>＋</button>
-<% end %>
+      <h4>商品一覧</h4>
+      
+      <%= link_to new_admin_score_path do %>
+        <button>＋</button>
+      <% end %>
+      
+      <table>
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>曲名</th>
+            <th>ジャンル</th>
+            <th>税抜価格</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @scores.each do |score| %>
+            <tr>
+              <td><%= score.id %></td>
+              <td><%= link_to score.score_name, admin_score_path(score.id) %></td>
+              <td><%= score.genre.genre_name %></td>
+              <td><%= score.without_tax.to_s(:delimited)%></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+      <%= paginate @scores %>
 
-<table>
-  <thead>
-    <tr>
-      <th>ID</th>
-      <th>曲名</th>
-      <th>ジャンル</th>
-      <th>税抜価格</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @scores.each do |score| %>
-      <tr>
-        <td><%= score.id %></td>
-        <td><%= link_to score.score_name, admin_score_path(score.id) %></td>
-        <td><%= score.genre.genre_name %></td>
-        <td><%= score.without_tax.to_s(:delimited)%></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-<%= paginate @scores %>
+    </div>
+    
+  </div>
+</div>

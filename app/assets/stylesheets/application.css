@@ -29,3 +29,11 @@
 .footer-content {
   color: white;
 }
+
+.public-registrations-field {
+  padding: 5px
+}
+
+.public-sessions-field {
+  padding-bottom: 10
+}

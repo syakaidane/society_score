@@ -15,6 +15,7 @@ class Admin::ScoresController < ApplicationController
 
   def index
     @scores = Score.page(params[:page]).per(20)
+    @genres = Genre.all
   end
 
   def show
