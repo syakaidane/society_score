@@ -1,0 +1,25 @@
+<div class="container">
+  <div class="row">
+    <table class= "genre-table table-bordered">
+      <thead>
+        <tr>
+          <th>ジャンル一覧</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% genres.each do |genre| %>
+          <tr>
+            <td>
+              <%= link_to scores_path(genre_id: genre.id) do %>
+                <%= genre.genre_name %>
+              <% end %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+    <%= link_to scores_path do %>
+      >楽譜一覧をみる
+    <% end %>
+  </div>
+</div>

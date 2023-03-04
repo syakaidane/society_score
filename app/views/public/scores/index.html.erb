@@ -1,17 +1,29 @@
-<%= render "sidebar", genres: @genres %>
-
-<h2>
-  <% if @genre.present? %>
-    <%= @genre.genre_name %>
-  <% else %>
-    商品一覧
-  <% end %>
-  <span>(全<%= @scores.total_count %>件中 <%= @scores.count %>件）</span>
-</h2>
-
-<% @scores.each do |score| %>
-  <%= link_to score_path(score) do %>
-    <%= image_tag score.get_image(150, 200) %>
-    <p><%= score.score_name %></p>
-  <% end %>
-<% end %>
+<div class= "container">
+  <div class= "row justify-content-start">
+    
+    <div class= "col-md-2 float-left my-5">
+      <%= render "layouts/sidebar", genres: @genres %>
+    </div>
+    
+    <div class= "col-md-10 my-5">
+      
+      <h2>
+        <% if @genre.present? %>
+          <%= @genre.genre_name %>
+        <% else %>
+          商品一覧
+        <% end %>
+        <span>(全<%= @scores.total_count %>件中 <%= @scores.count %>件）</span>
+      </h2>
+      
+      <% @scores.each do |score| %>
+        <%= link_to score_path(score) do %>
+          <%= image_tag score.get_image(150, 200) %>
+          <p><%= score.score_name %></p>
+        <% end %>
+      <% end %>
+      
+    </div>
+    
+  </div>
+</div>
