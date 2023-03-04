@@ -18,10 +18,14 @@
   background-color: #393E46;
 }
 
-.navbar-toggler-icon {
+.header-content {
   color: white;
 }
 
-.header-content {
+.border-top {
+  background-color: #393E46;
+}
+
+.footer-content {
   color: white;
 }
