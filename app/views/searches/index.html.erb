@@ -7,14 +7,8 @@
     
     <div class= "col-md-10 my-5">
       
-      <h2>
-        <% if @genre.present? %>
-          <%= @genre.genre_name %>
-        <% else %>
-          商品一覧
-        <% end %>
-        <span>(全<%= @scores.total_count %>件中 <%= @scores.count %>件）</span>
-      </h2>
+      <h2>検索結果</h2>
+      <span>(全<%= @scores.total_count %>件中 <%= @scores.count %>件）</span>
       
       <table class="table table-hover">
         <thead>
@@ -27,7 +21,7 @@
         </thead>
         <tbody>
           <% @scores.each do |score| %>
-            <tr class="light-text">
+            <tr>
               <td><%= score.id %></td>
               <td><%= link_to score.score_name, score_path(score.id) %></td>
               <td><%= score.genre.genre_name %></td>
@@ -35,7 +29,7 @@
             </tr>
           <% end %>
         </tbody>
-      </table>
+      
       <%= paginate @scores %>
       
     </div>

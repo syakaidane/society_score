@@ -4,7 +4,7 @@ class Score < ApplicationRecord
   
   has_many :order_details
   has_many :cart_items
-  has_many :favorites
+  has_many :favorites, dependent: :destroy
   belongs_to :genre
   
   validates :score_name, presence: true
@@ -17,6 +17,14 @@ class Score < ApplicationRecord
       image.attach(io: File.open(file_path), filename: "default-image.jpg", content_type: "image/jpeg")
     end
     score_image.variant(resize_to_fill: [width, height], gravity: :center).processed
+  end
+  
+  def self.looks(search, word)
+    @score = Score.where("score_name LIKE?","%#{word}%")
+  end
+  
+  def favorited?(customer)
+    favorites.where(customer_id: customer.id).exists?
   end
   
   def with_tax

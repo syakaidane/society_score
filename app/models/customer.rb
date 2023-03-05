@@ -6,7 +6,7 @@ class Customer < ApplicationRecord
 
   has_many :cart_scores
   has_many :orders
-  has_many :favorites
+  has_many :favorites, dependent: :destroy
   has_many :requests
   
   with_options presence: true do

@@ -1,2 +1,45 @@
-<h1>Public::Favorites#index</h1>
-<p>Find me in app/views/public/favorites/index.html.erb</p>
+<div class= "container">
+  <div class= "row justify-content-start">
+    
+    <div class= "col-md-2 my-5">
+      <%= render "layouts/sidebar", genres: @genres %>
+    </div>
+    
+    <div class= "col-md-10 my-5">
+      
+      <h2>
+        <%= @customer.last_name %><%= @customer.first_name %>さんの欲しいものリスト
+      </h2>
+      
+      <table class="table table-hover">
+        <thead>
+          <tr class="table-active text">
+            <th>ID</th>
+            <th>曲名</th>
+            <th>ジャンル</th>
+            <th>税抜価格</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @favorite_scores.each do |score| %>
+            <tr class="light-text">
+              <td><%= score.id %></td>
+              <td><%= link_to score.score_name, score_path(score.id) %></td>
+              <td><%= score.genre.genre_name %></td>
+              <td><%= score.without_tax.to_s(:delimited)%></td>
+              <td>
+                <%= link_to score_favorites_path(score.id), method: :delete do %>
+                  <span style="color:red;">★欲しいものリストから削除</span>
+                <% end %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+
+      
+    </div>
+    
+  </div>
+</div>

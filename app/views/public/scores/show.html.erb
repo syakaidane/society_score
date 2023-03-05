@@ -1,17 +1,39 @@
-<%= render 'layouts/sidebar', genres: @genres %>
+<div class= "container">
+  <div class= "row justify-content-start">
 
-<%= image_tag @score.get_image(300, 400) %>
+    <div class= "col-md-2 my-5">
+      <%= render "layouts/sidebar", genres: @genres %>
+    </div>
 
-<h3><%= @score.score_name %></h3>
+    <div class= "col-md-4 my-5">
+      <%= image_tag @score.get_image(300, 400) %>
+    </div>
 
-<h5><%= @score.score_caption %></h5>
+    <div class= "col-md-4 my-5">
+      <h3><%= @score.score_name %></h3>
 
-<h3 class= "mt-5">
-  ¥ <%= @score.with_tax.to_s(:delimited) %>
-  <span class= "tax">(税込)</span>
-</h3>
+      <h5><%= @score.score_caption %></h5>
 
-<%= form_with(model: @cart_score, url: cart_scores_path(@cart_score)) do |f| %>
-  <%= f.hidden_field :score_id, value: @score.id %>
-  <%= f.submit "カートに入れる" %>
-<% end %>
+      <h3 class= "mt-5">
+        ¥ <%= @score.with_tax.to_s(:delimited) %>
+        <span class= "tax">(税込)</span>
+      </h3>
+
+      <%= form_with(model: @cart_score, url: cart_scores_path(@cart_score)) do |f| %>
+        <%= f.hidden_field :score_id, value: @score.id %>
+        <%= f.submit "カートに入れる" %>
+      <% end %>
+
+      <% if @score.favorited?(current_customer) %>
+        <%= link_to score_favorites_path(@score.id), method: :delete do %>
+            <span style="color:red;">★欲しいものリストから削除</span>
+        <% end %>
+      <% else %>
+        <%= link_to score_favorites_path(@score.id), method: :post do %>
+            <span>★欲しいものリストに追加</span>
+        <% end %>
+      <% end %>
+    </div>
+
+  </div>
+</div>

@@ -1,31 +1,35 @@
-<h4>楽譜情報詳細</h4>
-<table>
-  <tbody>
-    <tr>
-      <td>商品名</td>
-      <td><%= @score.score_name %></td>
-    </tr>
-    <tr>
-      <td>商品説明</td>
-      <td><%= @score.score_caption %></td>
-    </tr>
-    <tr>
-      <td>ジャンル</td>
-      <td><%= @score.genre.genre_name %></td>
-    </tr>
-    <tr>
-      <td>税込み価格（税抜価格）</htdd>
-      <td><%= @score.with_tax.to_s(:delimited) %>(<%= @score.without_tax.to_s(:delimited) %>) 円</span></td>
-    </tr>
-  </tbody>
-</table>
-<%= link_to edit_admin_score_path(@score.id) do %>
-  <button>
-    編集する
-  </button>
-<% end %>
-<%= link_to admin_score_path(@score.id), method: :delete, "data-confirm" => "本当に削除しますか？" do %>
-  <button>
-    削除する
-  </button>
-<% end %>
+<div class= "container">
+  <div class= "row justify-content-start">
+    
+    <div class= "col-md-2 my-5">
+      <%= render 'layouts/sidebar', genres: @genres %>
+    </div>
+    
+    <div class= "col-md-4 my-5">
+      <%= image_tag @score.get_image(300, 400) %>
+    </div>
+      
+    <div class= "col-md-4 my-5">
+      <h3><%= @score.score_name %></h3>
+      
+      <h5><%= @score.score_caption %></h5>
+      
+      <h3 class= "mt-5">
+        ¥ <%= @score.with_tax.to_s(:delimited) %>
+        <span class= "tax">(税込)</span>
+      </h3>
+      
+      <%= link_to edit_admin_score_path(@score.id) do %>
+        <button>
+          編集する
+        </button>
+      <% end %>
+      <%= link_to admin_score_path(@score.id), method: :delete, "data-confirm" => "本当に削除しますか？" do %>
+        <button>
+          削除する
+        </button>
+      <% end %>
+    </div>
+    
+  </div>
+</div>

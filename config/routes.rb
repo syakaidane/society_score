@@ -13,6 +13,8 @@ Rails.application.routes.draw do
     sessions: "admin/sessions"
   }
   
+  get "search" => "searches#index"
+  
   # 会員側のルーティング設定
   scope module: :public do
     root to: "homes#top"
@@ -25,6 +27,9 @@ Rails.application.routes.draw do
     patch 'customers/withdraw' => 'customers#withdraw'
     
     resources :scores, only: [:index,:show]
+    resources :scores do
+      resource :favorites, only: [:create,:destroy]
+    end
     
     delete '/cart_scores' => 'cart_scores#destroy'
     resources :cart_scores do
@@ -37,7 +42,7 @@ Rails.application.routes.draw do
     post "/orders/confirm" => "orders#confirm"
     get "/orders/complete" => "orders#complete"
     
-    resources :favorites, only: [:create,:index,:destroy]
+    resources :favorites, only: [:index]
     resources :requests, only: [:new,:create,:index,:edit,:update,:destroy]
     
   end

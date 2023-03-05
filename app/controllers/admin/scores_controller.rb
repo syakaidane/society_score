@@ -20,6 +20,7 @@ class Admin::ScoresController < ApplicationController
 
   def show
     @score = Score.find(params[:id])
+    @genres = Genre.all
   end
 
   def edit
