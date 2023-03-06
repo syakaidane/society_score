@@ -29,7 +29,13 @@
           <% @scores.each do |score| %>
             <tr class="light-text">
               <td><%= score.id %></td>
-              <td><%= link_to score.score_name, score_path(score.id) %></td>
+              <td>
+                <% if admin_signed_in? %>
+                  <%= link_to score.score_name, admin_score_path(score.id) %>
+                <% else %>
+                  <%= link_to score.score_name, score_path(score.id) %>
+                <% end %>
+              </td>
               <td><%= score.genre.genre_name %></td>
               <td><%= score.without_tax.to_s(:delimited)%></td>
             </tr>

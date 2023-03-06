@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_03_02_080559) do
+ActiveRecord::Schema.define(version: 2023_03_06_071622) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -50,6 +50,12 @@ ActiveRecord::Schema.define(version: 2023_03_02_080559) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["email"], name: "index_admins_on_email", unique: true
     t.index ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true
+  end
+
+  create_table "artists", force: :cascade do |t|
+    t.string "artist_name", default: "", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "cart_scores", force: :cascade do |t|
@@ -117,6 +123,13 @@ ActiveRecord::Schema.define(version: 2023_03_02_080559) do
   create_table "scores", force: :cascade do |t|
     t.integer "genre_id", null: false
     t.string "score_name", default: "", null: false
+    t.string "artist_name", default: "", null: false
+    t.string "composer", default: "", null: false
+    t.string "arranger", default: "", null: false
+    t.string "grade", default: "", null: false
+    t.string "score", default: "", null: false
+    t.string "file_format", default: "", null: false
+    t.integer "page", null: false
     t.text "score_caption", default: "", null: false
     t.integer "without_tax", null: false
     t.datetime "created_at", precision: 6, null: false

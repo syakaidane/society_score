@@ -1,7 +1,7 @@
 ja:
   activerecord:
     attributes:
-      customer: 
+      customer:
         last_name: 姓
         first_name: 名
         kana_first: 名(カナ)
@@ -12,22 +12,28 @@ ja:
         email: メールアドレス
         password: パスワード
         password_confirmation: パスワード確認
-        
+
       score:
         score_name: 楽譜名
+        artist_name: アーティスト名
+        composer: 作曲者
+        arranger: 編曲者
+        grade: 難易度
+        file_format: ファイル形式
+        page: ページ数
         score_caption: 楽譜説明
         without_tax: 税抜価格
-        
+
       genre:
         genre_name: ジャンル名
-        
+
       errors:
         messages:
           invalid: "%{attribute}が正しくありません。"
           blank: "%{attribute}を入力してください。"
           wrong_password_confirmation: "パスワードが確認用と一致していません。"
           uniqueness: "その%{attribute}は使用できません"
-          
+
       public_sessions:
         new:
         create:
