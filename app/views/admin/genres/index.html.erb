@@ -1,5 +1,4 @@
 <h2>ジャンル作成</h2>
-<%= render 'layouts/errors', obj: @genre %>
 
 <%= form_with model: [:admin, @genre] do |f| %>
 <table>
@@ -11,6 +10,11 @@
     </p>
   </tr>
 </table>
+
+<% if @genre.errors.include?(:genre_name) %>
+  <p style="color: red;"><%= @genre.errors.full_messages_for(:genre_name).first %>
+<% end %>
+  
 <% end %>
 
 <h2>ジャンル一覧</h2>

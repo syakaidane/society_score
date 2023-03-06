@@ -5,7 +5,7 @@ class Admin::GenresController < ApplicationController
     if @genre.save
       redirect_to request.referer, notice: "ジャンルを作成しました。"
     else
-      @genres = Genre.all
+      @genres = Genre.page(params[:page]).per(10)
       render 'index'
     end
   end

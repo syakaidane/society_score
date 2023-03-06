@@ -1,12 +1,12 @@
 <div class= "container">
   <div class= "row justify-content-start">
-    
+
     <div class= "col-md-2 my-5">
       <%= render "layouts/sidebar", genres: @genres %>
     </div>
-    
+
     <div class= "col-md-10 my-5">
-      
+
       <h2>
         <% if @genre.present? %>
           <%= @genre.genre_name %>
@@ -15,7 +15,7 @@
         <% end %>
         <span>(全<%= @scores.total_count %>件中 <%= @scores.count %>件）</span>
       </h2>
-      
+
       <table class="table table-hover">
         <thead>
           <tr class="table-active text">
@@ -37,8 +37,8 @@
         </tbody>
       </table>
       <%= paginate @scores %>
-      
+
     </div>
-    
+
   </div>
 </div>

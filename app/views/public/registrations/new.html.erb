@@ -2,40 +2,82 @@
 
   <h1>新規会員登録</h1>
 
-  <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-    <%= render "public/shared/error_messages", resource: resource %>
+  <%= form_with model: [:public,@customer], url: customer_registration_path, id: 'new_customer', local: true do |f| %>
+    <% if @customer.errors.any? %>
+      <%= @customer.errors.count %>件のエラーが発生しました
+    <% end %>
 
   <table>
     <tr>
       <th><%= f.label :"名前" %></th>
-      <td class="public-registrations-field"><%= f.text_field :last_name, size: 25, placeholder: '姓' %></td>
-      <td class="public-registrations-field"><%= f.text_field :first_name, size: 25, placeholder: '名' %></td>
+      <td class="public-registrations-field">
+        <%= f.text_field :last_name, size: 25, placeholder: '姓' %>
+        <% if @customer.errors.include?(:last_name) %>
+          <p style="color: red;"><%= @customer.errors.full_messages_for(:last_name).first %>
+        <% end %>
+      </td>
+      <td class="public-registrations-field">
+        <%= f.text_field :first_name, size: 25, placeholder: '名' %>
+        <% if @customer.errors.include?(:first_name) %>
+          <p style="color: red;"><%= @customer.errors.full_messages_for(:first_name).first %>
+        <% end %>
+      </td>
     </tr>
 
     <tr>
       <th><%= f.label :"フリガナ" %></th>
-      <td class="public-registrations-field"><%= f.text_field :kana_last, size: 25, placeholder: 'セイ' %></td>
-      <td class="public-registrations-field"><%= f.text_field :kana_first, size: 25, placeholder: 'メイ' %></td>
+      <td class="public-registrations-field">
+        <%= f.text_field :kana_last, size: 25, placeholder: 'セイ' %>
+        <% if @customer.errors.include?(:kana_last) %>
+          <p style="color: red;"><%= @customer.errors.full_messages_for(:kana_last).first %>
+        <% end %>
+      </td>
+      <td class="public-registrations-field">
+        <%= f.text_field :kana_first, size: 25, placeholder: 'メイ' %>
+        <% if @customer.errors.include?(:kana_first) %>
+          <p style="color: red;"><%= @customer.errors.full_messages_for(:kana_first).first %>
+        <% end %>
+      </td>
     </tr>
 
     <tr>
       <th><%= f.label :"メールアドレス" %></th>
-      <td class="public-registrations-field"><%= f.email_field :email, autofocus: true, size: 25, autocomplete: "email" %></td>
+      <td class="public-registrations-field">
+        <%= f.email_field :email, autofocus: true, size: 25, autocomplete: "email" %>
+        <% if @customer.errors.include?(:email) %>
+          <p style="color: red;"><%= @customer.errors.full_messages_for(:email).first %>
+        <% end %>
+      </td>
     </tr>
 
     <tr>
       <th><%= f.label :"郵便番号" %></th>
-      <td class="public-registrations-field"><%= f.text_field :post_code, size: 25, placeholder: 'ハイフンなし' %></td>
+      <td class="public-registrations-field">
+        <%= f.text_field :post_code, size: 25, placeholder: 'ハイフンなし' %>
+        <% if @customer.errors.include?(:post_code) %>
+          <p style="color: red;"><%= @customer.errors.full_messages_for(:post_code).first %>
+        <% end %>
+      </td>
     </tr>
 
     <tr>
       <th><%= f.label :"住所" %></th>
-      <td colspan="3" class="public-registrations-field"><%= f.text_field :address, size: 70 %></td>
+      <td colspan="3" class="public-registrations-field">
+        <%= f.text_field :address, size: 70 %>
+        <% if @customer.errors.include?(:address) %>
+          <p style="color: red;"><%= @customer.errors.full_messages_for(:address).first %>
+        <% end %>
+      </td>
     </tr>
 
     <tr>
       <th><%= f.label :"電話番号" %></th>
-      <td class="public-registrations-field"><%= f.text_field :telephone, size: 25, placeholder: 'ハイフンなし' %></td>
+      <td class="public-registrations-field">
+        <%= f.text_field :telephone, size: 25, placeholder: 'ハイフンなし' %>
+        <% if @customer.errors.include?(:telephone) %>
+          <p style="color: red;"><%= @customer.errors.full_messages_for(:telephone).first %>
+        <% end %>
+      </td>
     </tr>
 
 
@@ -46,12 +88,22 @@
         (<%= @minimum_password_length %>文字以上)
         <% end %>
       </th>
-      <td class="public-registrations-field"><%= f.password_field :password, autocomplete: "new-password", size: 25 %></td>
+      <td class="public-registrations-field">
+        <%= f.password_field :password, autocomplete: "new-password", size: 25 %>
+        <% if @customer.errors.include?(:password) %>
+          <p style="color: red;"><%= @customer.errors.full_messages_for(:password).first %>
+        <% end %>
+      </td>
     </tr>
 
     <tr>
       <th><%= f.label :"パスワード確認" %></th>
-      <td class="public-registrations-field"><%= f.password_field :password_confirmation, autocomplete: "new-password", size: 25 %></td>
+      <td class="public-registrations-field">
+        <%= f.password_field :password_confirmation, autocomplete: "new-password", size: 25 %>
+        <% if @customer.errors.include?(:password_confirmation) %>
+          <p style="color: red;"><%= @customer.errors.full_messages_for(:password_confirmation).first %>
+        <% end %>
+      </td>
     </tr>
 
     <tr>

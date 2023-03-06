@@ -10,28 +10,36 @@
     </div>
 
     <div class= "col-md-4 my-5">
+
+      <h6>ジャンル：<%= @score.genre.genre_name %></h6>
+
       <h3><%= @score.score_name %></h3>
 
-      <h5><%= @score.score_caption %></h5>
+      <h6><%= @score.score_caption %></h6>
 
       <h3 class= "mt-5">
         ¥ <%= @score.with_tax.to_s(:delimited) %>
         <span class= "tax">(税込)</span>
       </h3>
 
-      <%= form_with(model: @cart_score, url: cart_scores_path(@cart_score)) do |f| %>
-        <%= f.hidden_field :score_id, value: @score.id %>
-        <%= f.submit "カートに入れる" %>
-      <% end %>
+      <% if customer_signed_in? %>
+        <%= form_with(model: @cart_score, url: cart_scores_path(@cart_score)) do |f| %>
+          <%= f.hidden_field :score_id, value: @score.id %>
+          <%= f.submit "カートに入れる" %>
+        <% end %>
 
-      <% if @score.favorited?(current_customer) %>
-        <%= link_to score_favorites_path(@score.id), method: :delete do %>
-            <span style="color:red;">★欲しいものリストから削除</span>
+        <% if @score.favorited?(current_customer) %>
+          <%= link_to score_favorites_path(@score.id), method: :delete do %>
+              <span style="color:red;">★欲しいものリストから削除</span>
+          <% end %>
+        <% else %>
+          <%= link_to score_favorites_path(@score.id), method: :post do %>
+              <span>★欲しいものリストに追加</span>
+          <% end %>
         <% end %>
       <% else %>
-        <%= link_to score_favorites_path(@score.id), method: :post do %>
-            <span>★欲しいものリストに追加</span>
-        <% end %>
+        <button> <%= link_to "カートに入れる", new_customer_session_path %></button><br>
+        <%= link_to "★欲しいものリストに追加" ,new_customer_session_path %>
       <% end %>
     </div>
 

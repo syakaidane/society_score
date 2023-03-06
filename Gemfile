@@ -59,3 +59,4 @@ gem 'kaminari','~> 1.2.1'
 gem "enum_help"
 gem 'pry-rails'
 gem 'rails-i18n', '~> 6.0'
+gem 'carrierwave'
