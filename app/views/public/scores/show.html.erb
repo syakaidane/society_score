@@ -5,17 +5,16 @@
       <%= render "layouts/sidebar", genres: @genres %>
     </div>
 
-    <div class= "col-md-4 my-5">
-      <%= image_tag @score.get_image(300, 400) %>
+    <div class= "col-md-1 my-5">
+      <%= image_tag @score.get_image(300, 423) %>
+    </div>
+
+    <div class= "col-md-5 my-5">
     </div>
 
     <div class= "col-md-4 my-5">
 
-      <h6>ジャンル：<%= @score.genre.genre_name %></h6>
-
-      <h3><%= @score.score_name %></h3>
-
-      <h6><%= @score.score_caption %></h6>
+      <h2><%= @score.score_name %></h2>
 
       <h3 class= "mt-5">
         ¥ <%= @score.with_tax.to_s(:delimited) %>
@@ -41,6 +40,36 @@
         <button> <%= link_to "カートに入れる", new_customer_session_path %></button><br>
         <%= link_to "★欲しいものリストに追加" ,new_customer_session_path %>
       <% end %>
+      
+      <h6>楽譜詳細</h6>
+
+        <table class= "table table-hover">
+        <tr>
+          <th>アーティスト</th>
+          <td><%= @score.artist_name %></td>
+        </tr>
+        <tr>
+          <th>作曲者</th>
+          <td><%= @score.composer %></td>
+        </tr>
+        <tr>
+          <th>アレンジ</th>
+          <td><%= @score.arranger %></td>
+        </tr>
+        <tr>
+          <th>難易度</th>
+          <td><%= @score.grade %></td>
+        </tr>
+        <tr>
+          <th>ジャンル</th>
+          <td><%= @score.genre.genre_name %></td>
+        </tr>
+        <tr>
+          <th>解説</th>
+          <td><%= @score.score_caption %></td>
+        </tr>
+      </table>
+      
     </div>
 
   </div>
