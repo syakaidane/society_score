@@ -3,18 +3,18 @@
   <h1>管理者用ログイン</h1>
 
   <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-    <div class="field">
+    <div class="field mt-5">
       <%= f.label :メールアドレス %><br />
       <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
     </div>
   
-    <div class="field">
+    <div class="field mt-3">
       <%= f.label :パスワード %><br />
       <%= f.password_field :password, autocomplete: "current-password" %>
     </div>
   
     <div class="actions">
-      <%= f.submit "ログイン" %>
+      <%= f.submit "ログイン", class: "btn btn-success mt-5" %>
     </div>
   <% end %>
   

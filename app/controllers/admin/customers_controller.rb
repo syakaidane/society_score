@@ -1,10 +1,12 @@
 class Admin::CustomersController < ApplicationController
   def index
-    @customers = Customer.page(params[:page]).per(10)
+    @customers = Customer.page(params[:page]).per(10).order(created_at: "DESC")
+    @genres = Genre.all
   end
 
   def show
     @customer = Customer.find(params[:id])
+    @genres = Genre.all
   end
 
   def edit

@@ -1,20 +1,32 @@
-<h2>ジャンル編集</h2>
-<%= render 'layouts/errors', obj: @genre %>
+<div class= "container">
+  <div class= "row justify-content-start">
 
-<%= form_with model: [:admin, @genre], method: :patch do |f| %>
-  <table>
-    <tr>
-      <td>
-        <b><%= f.label :ジャンル名 %></b>
-      </td>
-      <td>
-        <%= f.text_field :genre_name %>
-      </td>
-      <td>
-        <%= f.submit '変更を保存' %>
-      </td>
-    </tr>
-  </table>
-<% end %>
+    <div class= "col-md-2 my-5">
+      <%= render "layouts/sidebar", genres: @genres %>
+    </div>
 
-<%= link_to "削除する", admin_genre_path(@genre.id), method: :delete, "data-confirm" => "本当に削除しますか？" %>
+    <div class= "col-md-10 my-5">
+      <h2>ジャンル編集</h2>
+      <%= render 'layouts/errors', obj: @genre %>
+
+      <%= form_with model: [:admin, @genre], method: :patch do |f| %>
+        <table class= "table text-secondary">
+          <tr>
+            <td>
+              <b><%= f.label :ジャンル名 %></b>
+            </td>
+            <td>
+              <%= f.text_field :genre_name %>
+            </td>
+          </tr>
+        </table>
+        <%= f.submit '変更を保存', class: "btn btn-success mt-3" %>
+      <% end %>
+
+      <%= link_to admin_genre_path(@genre.id), method: :delete, "data-confirm" => "本当に削除しますか？" do %>
+        <button type="button" class="btn btn-danger my-3">削除する</button>
+      <% end %>
+    </div>
+
+  </div>
+</div>

@@ -8,7 +8,7 @@
     <% end %>
     <%= flash[:error] %>
   
-    <div class="public-sessions-field">
+    <div class="public-sessions-field mt-5">
       <%= f.label :メールアドレス %><br />
       <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
       <% if @customer.errors.include?(:email) %>
@@ -16,7 +16,7 @@
       <% end %>
     </div>
   
-    <div class="public-sessions-field">
+    <div class="public-sessions-field mt-3">
       <%= f.label :パスワード %><br />
       <%= f.password_field :password, autocomplete: "current-password" %>
       <% if @customer.errors.include?(:password) %>
@@ -26,7 +26,7 @@
   
   
     <div class="actions">
-      <%= f.submit "ログイン" %>
+      <%= f.submit "ログイン", class: "btn btn-success mt-5" %>
     </div>
   <% end %>
 </div>

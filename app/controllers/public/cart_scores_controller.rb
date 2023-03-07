@@ -2,6 +2,7 @@ class Public::CartScoresController < ApplicationController
   
   def index
     @cart_scores = CartScore.all
+    @genres = Genre.all
   end
   
   def create

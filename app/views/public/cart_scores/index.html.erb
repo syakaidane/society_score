@@ -1,55 +1,64 @@
-<h2>ショッピングカート</h2>
+<div class= "container">
+  <div class= "row justify-content-start">
 
-<%= link_to destroy_all_cart_score_path(current_customer.id), method: :delete do %>
-  <button>カートを空にする</button>
-<% end %>
+    <div class= "col-md-2 my-5">
+      <%= render "layouts/sidebar", genres: @genres %>
+    </div>
 
-<table>
-  <thead>
-    <tr>
-      <th>商品名</th>
-      <th>単価(税込)</th>
-      <th>小計</th>
-      <th></th>
-    </tr>
-  </thead>
-    <% total = 0 %>
-  <% if current_customer.cart_scores.present? %>
-
-  <tbody>
-    <% @cart_scores.each do |cart_score| %>
-      <tr>
-        <td>
-          <%= cart_score.score.score_name %>
-        </td>
-        <td><%= cart_score.score.with_tax.to_i %></td>
-        <td>
-          <% subtotal = cart_score.score.with_tax.to_i %>
-          <%= subtotal %>
-        </td>
-        <td>
-          <%= link_to cart_score_path(cart_score.id), method: :delete do %>
-            削除
+    <div class= "col-md-10 my-5">
+      <h2>ショッピングカート</h2>
+      
+      <%= link_to destroy_all_cart_score_path(current_customer.id), method: :delete do %>
+        <button type="button" class="btn btn-secondary my-3">カートを空にする</button>
+      <% end %>
+      
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th>商品名</th>
+            <th>単価(税込)</th>
+            <th>小計</th>
+            <th></th>
+          </tr>
+        </thead>
+          <% total = 0 %>
+        <% if current_customer.cart_scores.present? %>
+      
+        <tbody>
+          <% @cart_scores.each do |cart_score| %>
+            <tr>
+              <td>
+                <%= cart_score.score.score_name %>
+              </td>
+              <td><%= cart_score.score.with_tax.to_i %></td>
+              <td>
+                <% subtotal = cart_score.score.with_tax.to_i %>
+                <%= subtotal %>
+              </td>
+              <td>
+                <%= link_to cart_score_path(cart_score.id), method: :delete do %>
+                  <button type="button" class="btn btn-danger">削除</button>
+                <% end %>
+              </td>
+            </tr>
+              <% total += subtotal %>
           <% end %>
-        </td>
-      </tr>
-        <% total += subtotal %>
-    <% end %>
-  </tbody>
-  <% end %>
-</table>
+        </tbody>
+        <% end %>
+      </table>
+      
+      <h2>合計：<%= total %>円</h2>
+      
+      <%= link_to root_path do %>
+        <button type="button" class="btn btn-primary mt-3">買い物を続ける</button>
+      <% end %>
+      
+      <% if @cart_scores.present? %>
+        <%= link_to new_order_path do %>
+          <button type="button" class="btn btn-success mt-3">情報入力へ</button>
+        <% end %>
+      <% end %>
+    </div>
 
-<%= link_to "買い物を続ける", root_path %>
-
-<table>
-  <thead>
-    <tr>
-      <th>合計金額</th>
-      <th><%= total %></th>
-    </tr>
-  </thead>
-</table>
-
-<% if @cart_scores.present? %>
-  <%= link_to "情報入力に進む", new_order_path %>
-<% end %>
+  </div>
+</div>
