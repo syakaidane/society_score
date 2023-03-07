@@ -3,13 +3,13 @@ class Public::FavoritesController < ApplicationController
   def create
     @score_favorite = Favorite.new(customer_id: current_customer.id, score_id: params[:score_id])
     @score_favorite.save
-    redirect_to score_path(params[:score_id]) 
+    redirect_to favorites_path
   end
   
   def destroy
     @score_favorite = Favorite.find_by(customer_id: current_customer.id, score_id: params[:score_id])
     @score_favorite.destroy
-    redirect_to score_path(params[:score_id]) 
+    redirect_to favorites_path
   end
   
   def index
