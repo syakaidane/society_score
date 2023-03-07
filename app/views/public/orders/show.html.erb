@@ -1,41 +1,43 @@
-<h2>注文履歴詳細</h2>
-
-<h6>注文情報</h6>
-
-<table>
-  <tbody>
-    <tr>
-      <th>注文日</th>
-      <td><%= @order.created_at.strftime('%Y年/%m月/%d日') %></td>
-    </tr>
-    <tr>
-      <th>支払い方法</th>
-      <td><%= @order.payment_method_i18n %></td>
-    </tr>
-    <tr>
-      <th>ご請求金額</th>
-      <td>¥<%= @order.total %></td>
-    </tr>
-  </tbody>
-</table>
-
-<h6>注文内容</h6>
-
-<table>
-  <thead>
-    <tr>
-      <th>商品</th>
-      <th>単価(税込み)</th>
-      <th>小計</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @order_lists.each do |order_list| %>
+<div class="container my-5">
+  <h2>注文履歴詳細</h2>
+  
+  <h6>注文情報</h6>
+  
+  <table>
+    <tbody>
       <tr>
-        <td><%= order_list.score.score_name %></td>
-        <td><%= order_list.score.with_tax %></td>
-        <td><%= order_list.score.with_tax %></td>
+        <th>注文日</th>
+        <td><%= @order.created_at.strftime('%Y年/%m月/%d日') %></td>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+      <tr>
+        <th>支払い方法</th>
+        <td><%= @order.payment_method_i18n %></td>
+      </tr>
+      <tr>
+        <th>ご請求金額</th>
+        <td>¥<%= @order.total %></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  <h6>注文内容</h6>
+  
+  <table>
+    <thead>
+      <tr>
+        <th>商品</th>
+        <th>単価(税込み)</th>
+        <th>小計</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @order_lists.each do |order_list| %>
+        <tr>
+          <td><%= order_list.score.score_name %></td>
+          <td><%= order_list.score.with_tax %></td>
+          <td><%= order_list.score.with_tax %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
