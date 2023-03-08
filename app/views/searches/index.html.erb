@@ -1,15 +1,15 @@
 <div class= "container">
   <div class= "row justify-content-start">
-    
+
     <div class= "col-md-2 my-5">
       <%= render "layouts/sidebar", genres: @genres %>
     </div>
-    
+
     <div class= "col-md-10 my-5">
-      
+
       <h2>検索結果</h2>
       <span>(全<%= @scores.total_count %>件中 <%= @scores.count %>件）</span>
-      
+
       <table class="table table-hover">
         <thead>
           <tr class="table-active text">
@@ -29,10 +29,11 @@
             </tr>
           <% end %>
         </tbody>
-      
+      </table>
+
       <%= paginate @scores %>
-      
+
     </div>
-    
+
   </div>
 </div>

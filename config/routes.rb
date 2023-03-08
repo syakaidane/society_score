@@ -37,10 +37,10 @@ Rails.application.routes.draw do
         delete "destroy_all"
       end
     end
-  
+    
+    get "/orders/complete" => "orders#complete"
     resources :orders, only: [:new,:index,:show,:create]
     post "/orders/confirm" => "orders#confirm"
-    get "/orders/complete" => "orders#complete"
     
     resources :favorites, only: [:index]
     resources :requests, only: [:new,:create,:index,:edit,:update,:destroy]

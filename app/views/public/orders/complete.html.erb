@@ -6,7 +6,15 @@
     </div>
 
     <div class= "col-md-10 my-5">
-      <h1>ご注文ありがとうございました！</h1>
+      <div class="col text-center">
+        <h1 class="mt-5">ご注文ありがとうございました！</h1>
+        
+        
+        <h5 class="mt-5">注文履歴からダウンロードできます↓</h5>
+        <%= link_to orders_path do %>
+          <button type="button" class="btn btn-info">注文履歴</button>
+        <% end %>
+        </div>
     </div>
 
   </div>
