@@ -26,6 +26,10 @@ ja:
 
       genre:
         genre_name: ジャンル名
+        
+      request:
+        title: 題名
+        body: 説明
 
       errors:
         messages:

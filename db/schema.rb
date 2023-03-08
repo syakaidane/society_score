@@ -116,6 +116,8 @@ ActiveRecord::Schema.define(version: 2023_03_06_071622) do
 
   create_table "requests", force: :cascade do |t|
     t.integer "customer_id", null: false
+    t.string "title", default: "", null: false
+    t.text "body", default: "", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

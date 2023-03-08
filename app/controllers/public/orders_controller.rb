@@ -34,6 +34,7 @@ class Public::OrdersController < ApplicationController
   end
 
   def complete
+    @genres = Genre.all
   end
   
   def index

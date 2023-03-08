@@ -1,32 +1,34 @@
-<h4>楽譜情報編集</h4>
-<%= form_with model: @score, url: admin_score_path(@score.id) do |f| %>
-  <table>
-    <tr>
-      <th><%= f.label :score_image, "画像" %></th>
-      <td><%= f.file_field :score_image, accept: "image/*" %></td>
-    </tr>
-    <tr>
-      <th><%= f.label :score_name, "楽譜名" %></th>
-      <td><%= f.text_field :score_name, :placeholder => "楽譜名", size: 50 %></td>
-    </tr>
-    <tr>
-      <th><%= f.label :score_caption, "楽譜説明" %></th>
-      <td><%= f.text_area :score_caption, :placeholder => "ここに説明文を記述します", size: "50x3" %></td>
-    </tr>
-    <tr>
-      <th><%= f.label :genre_id, "ジャンル" %></th>
-      <td><%= f.collection_select :genre_id, Genre.all, :id, :genre_name, {include_blank: "--選択してください--"} %></td>
-    </tr>
-    <tr>
-      <th><%= f.label :without_tax, "税抜価格" %></th>
-      <td><%= f.number_field :without_tax, :placeholder => "1000" %>円</td>
-    </tr>
-  </table>
-  <%= f.submit "変更を保存" %>
-<% end %>
-
-<%= link_to admin_score_path(@score.id), method: :delete, "data-confirm" => "本当に削除しますか？" do %>
-  <button>
-    削除する
-  </button>
-<% end %>
+<div class="container my-5">
+  <h4>楽譜情報編集</h4>
+  <%= form_with model: @score, url: admin_score_path(@score.id) do |f| %>
+    <table>
+      <tr>
+        <th><%= f.label :score_image, "画像" %></th>
+        <td><%= f.file_field :score_image, accept: "image/*" %></td>
+      </tr>
+      <tr>
+        <th><%= f.label :score_name, "楽譜名" %></th>
+        <td><%= f.text_field :score_name, :placeholder => "楽譜名", size: 50 %></td>
+      </tr>
+      <tr>
+        <th><%= f.label :score_caption, "楽譜説明" %></th>
+        <td><%= f.text_area :score_caption, :placeholder => "ここに説明文を記述します", size: "50x3" %></td>
+      </tr>
+      <tr>
+        <th><%= f.label :genre_id, "ジャンル" %></th>
+        <td><%= f.collection_select :genre_id, Genre.all, :id, :genre_name, {include_blank: "--選択してください--"} %></td>
+      </tr>
+      <tr>
+        <th><%= f.label :without_tax, "税抜価格" %></th>
+        <td><%= f.number_field :without_tax, :placeholder => "1000" %>円</td>
+      </tr>
+    </table>
+    <%= f.submit "変更を保存", class: "btn btn-success my-3" %>
+  <% end %>
+  
+  <%= link_to admin_score_path(@score.id), method: :delete, "data-confirm" => "本当に削除しますか？" do %>
+    <button type="button" class="btn btn-danger">
+      削除する
+    </button>
+  <% end %>
+</div>

@@ -1,2 +1,17 @@
-<h1>Admin::Requests#edit</h1>
-<p>Find me in app/views/admin/requests/edit.html.erb</p>
+<div class="container my-5">
+  <h2>リクエスト詳細/編集</h2>
+  <%= form_with model: @request, url: admin_request_path(@request.id) do |f| %>
+    <table>
+      <tr>
+        <th><%= f.label :title, "楽譜名", class:"m-3" %></th>
+        <td><%= f.text_field :title, size: 50 %></td>
+      </tr>
+      <tr>
+        <th><%= f.label :body, "楽譜説明" %></th>
+        <td><%= f.text_area :body, size: "50x3" %></td>
+      </tr>
+    </table>
+    <%= f.submit "変更を保存", class: "btn btn-success my-3" %>
+  <% end %>
+
+</div>

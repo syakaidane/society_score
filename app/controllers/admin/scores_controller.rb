@@ -29,7 +29,7 @@ class Admin::ScoresController < ApplicationController
   
   def update
     @score = Score.find(params[:id])
-    if @score.update(item_params)
+    if @score.update(score_params)
       redirect_to admin_score_path(@score.id)
     else
       render "edit"

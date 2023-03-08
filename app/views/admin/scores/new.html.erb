@@ -7,10 +7,6 @@
       <%= @score.errors.count %>件のエラーが発生しました
     <% end %>
 
-    <% @score.errors.full_messages.each do |message| %>
-      <%= message %>
-    <% end %>
-
     <table>
       <tr>
         <th><%= f.label :score_image, "画像" %></th>

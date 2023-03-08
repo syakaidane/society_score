@@ -1,2 +1,38 @@
-<h1>Public::Requests#new</h1>
-<p>Find me in app/views/public/requests/new.html.erb</p>
+<div class="container my-5">
+
+  <h2>リクエスト新規登録</h2>
+
+  <%= form_with model: @request do |f| %>
+    <% if @request.errors.any? %>
+      <%= @request.errors.count %>件のエラーが発生しました
+    <% end %>
+    
+    <table>
+      <tr>
+        <th><%= f.label :title, "題名", class:"m-3" %></th>
+        <td>
+          <%= f.text_field :title, :placeholder => "曲名など", size: 50 %>
+          <% if @request.errors.include?(:title) %>
+            <p style="color: red;"><%= @request.errors.full_messages_for(:title).first %>
+          <% end %>
+        </td>
+      </tr>
+      <tr>
+        <th><%= f.label :body, "説明" %></th>
+        <td>
+          <%= f.text_area :body, :placeholder => "ここに説明文を記述します", size: "50x5" %>
+          <% if @request.errors.include?(:body) %>
+            <p style="color: red;"><%= @request.errors.full_messages_for(:body).first %>
+          <% end %>
+        </td>
+      </tr>
+      <tr>
+        <th></th>
+        <td>
+          <%= f.submit "新規登録", class: "btn btn-success my-3" %>
+        </td>
+      </tr>
+    </table>
+  <% end %>
+
+</div>

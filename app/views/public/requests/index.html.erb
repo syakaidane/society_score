@@ -1,2 +1,47 @@
-<h1>Public::Requests#index</h1>
-<p>Find me in app/views/public/requests/index.html.erb</p>
+<div class= "container">
+  <div class= "row justify-content-start">
+
+    <div class= "col-md-2 my-5">
+      <%= render "layouts/sidebar", genres: @genres %>
+    </div>
+
+    <div class= "col-md-10 my-5">
+      <h2>リクエスト一覧</h2>
+
+      <%= link_to new_request_path do %>
+        <button type="button" class="btn btn-secondary my-2">＋</button>
+      <% end %>
+
+      <table class="table table-hover">
+        <thead>
+          <tr class="table-active text">
+            <th>ID</th>
+            <th>件名</th>
+            <th></th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @requests.each do |request| %>
+            <tr class="light-text">
+              <td><%= request.id %></td>
+              <td><%= request.title %></td>
+              <td>
+                <%= link_to edit_request_path(request.id) do %>
+                  <button type="button" class="btn btn-success">詳細/編集</button>
+                <% end %>
+              </td>
+              <td>
+                <%= link_to request_path(request.id), method: :delete, "data-confirm" => "本当に削除しますか？" do %>
+                  <button type="button" class="btn btn-danger">削除する</button>
+                <% end %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+      <%= paginate @requests %>
+    </div>
+
+  </div>
+</div>

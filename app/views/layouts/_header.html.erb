@@ -60,6 +60,14 @@
           <% end %>
         </li>
         <li>
+          <%= link_to admin_requests_path do %>
+            <div class="header-content mr-4">
+              <i class="fas fa-microphone-alt"></i>
+              リクエスト
+            </div>
+          <% end %>
+        </li>
+        <li>
           <%= link_to destroy_admin_session_path, method: :delete do %>
             <div class="header-content mr-4">
               <i class="fas fa-sign-out-alt"></i>
@@ -90,6 +98,14 @@
             <div class="header-content mr-4">
               <i class="fas fa-shopping-cart"></i>
               カート
+            </div>
+          <% end %>
+        </li>
+        <li>
+          <%= link_to requests_path do %>
+            <div class="header-content mr-4">
+              <i class="fas fa-microphone-alt"></i>
+              リクエスト
             </div>
           <% end %>
         </li>
