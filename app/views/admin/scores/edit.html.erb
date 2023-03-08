@@ -1,5 +1,5 @@
 <div class="container my-5">
-  <h4>楽譜情報編集</h4>
+  <h2>楽譜情報編集</h2>
   <%= form_with model: @score, url: admin_score_path(@score.id) do |f| %>
     <table>
       <tr>
@@ -11,12 +11,70 @@
         <td><%= f.text_field :score_name, :placeholder => "楽譜名", size: 50 %></td>
       </tr>
       <tr>
+        <th><%= f.label :artist_name, "アーティスト名" %></th>
+        <td>
+          <%= f.text_field :artist_name, :placeholder => "アーティスト名", size: 50 %>
+          <% if @score.errors.include?(:artist_name) %>
+            <p style="color: red;"><%= @score.errors.full_messages_for(:artist_name).first %>
+          <% end %>
+        </td>
+      </tr>
+      <tr>
+        <th><%= f.label :composer, "作曲者名" %></th>
+        <td>
+          <%= f.text_field :composer, :placeholder => "作曲者名", size: 50 %>
+          <% if @score.errors.include?(:composer) %>
+            <p style="color: red;"><%= @score.errors.full_messages_for(:composer).first %>
+          <% end %>
+        </td>
+      </tr>
+      <tr>
+        <th><%= f.label :arranger, "編曲者名" %></th>
+        <td>
+          <%= f.text_field :arranger, :placeholder => "編曲者名", size: 50 %>
+          <% if @score.errors.include?(:arranger) %>
+            <p style="color: red;"><%= @score.errors.full_messages_for(:arranger).first %>
+          <% end %>
+        </td>
+      </tr>
+      <tr>
+        <th><%= f.label :grade, "難易度" %></th>
+        <td>
+          <%= f.text_field :grade, :placeholder => "難易度" %>
+          <% if @score.errors.include?(:grade) %>
+            <p style="color: red;"><%= @score.errors.full_messages_for(:grade).first %>
+          <% end %>
+        </td>
+      </tr>
+      <tr>
         <th><%= f.label :score_caption, "楽譜説明" %></th>
         <td><%= f.text_area :score_caption, :placeholder => "ここに説明文を記述します", size: "50x3" %></td>
       </tr>
       <tr>
         <th><%= f.label :genre_id, "ジャンル" %></th>
         <td><%= f.collection_select :genre_id, Genre.all, :id, :genre_name, {include_blank: "--選択してください--"} %></td>
+      </tr>
+      <tr>
+        <th><%= f.label :score, "ファイル" %></th>
+        <td><%= f.file_field :score %></td>
+      </tr>
+      <tr>
+        <th><%= f.label :file_format, "ファイル形式" %></th>
+        <td>
+          <%= f.text_field :file_format, :placeholder => "ファイル形式" %>
+          <% if @score.errors.include?(:file_format) %>
+            <p style="color: red;"><%= @score.errors.full_messages_for(:file_format).first %>
+          <% end %>
+        </td>
+      </tr>
+      <tr>
+        <th><%= f.label :page, "ページ数" %></th>
+        <td>
+          <%= f.text_field :page, :placeholder => "ページ数" %>
+          <% if @score.errors.include?(:page) %>
+            <p style="color: red;"><%= @score.errors.full_messages_for(:page).first %>
+          <% end %>
+        </td>
       </tr>
       <tr>
         <th><%= f.label :without_tax, "税抜価格" %></th>

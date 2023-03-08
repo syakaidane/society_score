@@ -13,6 +13,7 @@ class CreateScores < ActiveRecord::Migration[6.1]
       t.integer :page,               null: false, default: ""
       t.text :score_caption,         null: false, default: ""
       t.integer :without_tax,        null: false, default: ""
+      t.string :youtube_url,                      default: ""
       t.timestamps
     end
   end

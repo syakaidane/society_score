@@ -6,6 +6,11 @@ class Admin::ScoresController < ApplicationController
   
   def create
     @score = Score.new(score_params)
+  
+      url = params[:score][:youtube_url]
+      url = url.last(11)
+      @score.youtube_url = url
+    
     if @score.save
       redirect_to admin_path, notice: "楽譜を登録しました。"
     else

@@ -134,6 +134,7 @@ ActiveRecord::Schema.define(version: 2023_03_06_071622) do
     t.integer "page", null: false
     t.text "score_caption", default: "", null: false
     t.integer "without_tax", null: false
+    t.string "youtube_url", default: ""
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
