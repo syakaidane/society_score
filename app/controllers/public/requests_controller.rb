@@ -15,7 +15,7 @@ class Public::RequestsController < ApplicationController
   end
 
   def index
-    @requests = Request.page(params[:page]).per(10).order(created_at: "DESC")
+    @requests = Request.page(params[:page]).per(8).order(created_at: "DESC")
     @genres = Genre.all
   end
 
