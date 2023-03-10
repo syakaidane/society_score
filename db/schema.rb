@@ -129,7 +129,7 @@ ActiveRecord::Schema.define(version: 2023_03_06_071622) do
     t.string "composer", default: "", null: false
     t.string "arranger", default: "", null: false
     t.string "grade", default: "", null: false
-    t.string "score", default: "", null: false
+
     t.string "file_format", default: "", null: false
     t.integer "page", null: false
     t.text "score_caption", default: "", null: false
