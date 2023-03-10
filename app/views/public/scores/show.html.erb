@@ -8,10 +8,11 @@
     <div class= "col-md-2 my-5">
       <h6 class="mt-3">sample</h6>
       <%= image_tag @score.get_image(300, 423) %>
-      <p>
-        <strong>Youtube url:</strong>
-        <iframe width="373" height="210" src="https://www.youtube.com/embed/<%= @score.youtube_url%>" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-      </p>
+      <% if @score.youtube_url.present? %>
+        <p>
+          <iframe width="373" height="210" src="https://www.youtube.com/embed/<%= @score.youtube_url%>" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </p>
+      <% end %>
     </div>
 
     <div class= "col-md-4 my-5">
