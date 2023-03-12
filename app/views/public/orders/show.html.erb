@@ -46,7 +46,9 @@
     </div>
 
     <div class= "col-md-8">
-      <object data="/uploads/score/score/1/natsu_mero.pdf" type="application/pdf" width="100%" height="100%"></object>
+      <% @order_lists.each do |order_list| %>
+        <object data="/uploads/score/score/<%= order_list.score.id %>/<%= order_list.score.score_name %>.pdf" type="application/pdf" width="50%" height="50%"></object>
+      <% end %>
     </div>
   </div>
 </div>
