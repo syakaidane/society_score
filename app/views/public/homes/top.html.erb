@@ -7,6 +7,22 @@
     
     <div class= "col-md-10 my-5">
       <%= link_to 'ゲストログイン（閲覧用）', homes_guest_sign_in_path, method: :post %>
+      
+      
+      <h4><b>新着商品</b></h4>
+        <div class = "row" >
+          <% @scores.first(3).each do |score| %>
+            <div class="col text-center">
+              
+              <p class="top-score">
+                <%= link_to(score) do %>
+                  <%= image_tag score.get_image(150, 150) %>
+                <% end %>
+              </p>
+              <p class="top-score"><%= score.score_name %></p>
+            </div>
+          <% end %>
+        </div>
     </div>
     
   </div>

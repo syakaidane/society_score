@@ -60,5 +60,6 @@ gem "enum_help"
 gem 'pry-rails'
 gem 'rails-i18n', '~> 6.0'
 gem 'carrierwave'
+gem "jquery-rails"
 gem 'cloudinary'
 gem 'dotenv-rails'
