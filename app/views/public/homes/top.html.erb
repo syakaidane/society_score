@@ -1,19 +1,47 @@
 <div class= "container">
   <div class= "row justify-content-start">
-    
+
     <div class= "col-md-2 my-5">
       <%= render "layouts/sidebar", genres: @genres %>
     </div>
-    
+
     <div class= "col-md-10 my-5">
-      <%= link_to 'ゲストログイン（閲覧用）', homes_guest_sign_in_path, method: :post %>
-      
-      
+
+      <ul class="p-0 slider">
+        <li class="slider-item slider-item01">
+          <%= link_to about_path do %>
+            <%= image_tag 'slick2.jpg' %>
+          <% end %>
+        </li>
+        <li class="slider-item slider-item02">
+          <%= link_to requests_path do %>
+            <%= image_tag 'slick4.jpg' %>
+          <% end %>
+        </li>
+        <li class="slider-item slider-item03">
+          <%= link_to homes_guest_sign_in_path, method: :post do %>
+            <%= image_tag 'slick3.png' %>
+          <% end %>
+        </li>
+      </ul>
+      <script>
+        $('.slider').slick({
+        autoplay: true,//自動的に動き出すか
+        autoplaySpeed: 3000,//次のスライドに切り替わる待ち時間
+        speed: 1500,//スライドの動きのスピード
+        infinite: true,//スライドをループさせるか
+        slidesToShow: 1,//スライドを画面に3枚見せる
+        slidesToScroll: 1,//1回のスクロールで3枚の写真を移動して見せる
+        arrows: false,//画像移動用の矢印の表示
+        dots: true,//下部ドットナビゲーションの表示
+        });
+      </script>
+
       <h4><b>新着商品</b></h4>
         <div class = "row" >
           <% @scores.first(3).each do |score| %>
             <div class="col text-center">
-              
+
               <p class="top-score">
                 <%= link_to(score) do %>
                   <%= image_tag score.get_image(150, 150) %>
@@ -24,6 +52,6 @@
           <% end %>
         </div>
     </div>
-    
+
   </div>
 </div>
