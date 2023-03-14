@@ -44,7 +44,7 @@ Rails.application.routes.draw do
     post "/orders/confirm" => "orders#confirm"
     
     resources :favorites, only: [:index]
-    resources :requests, only: [:new,:create,:index,:edit,:update,:destroy]
+    resources :requests, only: [:new,:create,:index,:show,:edit,:update,:destroy]
     
   end
   

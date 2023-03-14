@@ -18,6 +18,10 @@ class Public::RequestsController < ApplicationController
     @requests = Request.page(params[:page]).per(8).order(created_at: "DESC")
     @genres = Genre.all
   end
+  
+  def show
+    @request = Request.find(params[:id])
+  end
 
   def edit
     @request = Request.find(params[:id])

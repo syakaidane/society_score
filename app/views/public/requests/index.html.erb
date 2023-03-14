@@ -25,7 +25,12 @@
           <% @requests.each do |request| %>
             <tr class="light-text">
               <td><%= request.id %></td>
-              <td><%= request.title %></td>
+              <td>
+                <%= link_to request_path(request.id) do %>
+                  <%= request.title %>
+                <% end %>
+              </td>
+              <% if request.customer == current_customer %>
               <td>
                 <%= link_to edit_request_path(request.id) do %>
                   <button type="button" class="btn btn-success">詳細/編集</button>
@@ -36,6 +41,10 @@
                   <button type="button" class="btn btn-danger">削除する</button>
                 <% end %>
               </td>
+              <% else %>
+              <td></td>
+              <td></td>
+              <% end %>
             </tr>
           <% end %>
         </tbody>
