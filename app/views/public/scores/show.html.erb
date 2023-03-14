@@ -43,7 +43,7 @@
           <% end %>
         <% end %>
       <% else %>
-        <button> <%= link_to "カートに入れる", new_customer_session_path %></button><br>
+        <%= link_to "カートに入れる", new_customer_session_path, class: "btn btn-warning my-1" %>
         <%= link_to "★欲しいものリストに追加" ,new_customer_session_path %>
       <% end %>
       
