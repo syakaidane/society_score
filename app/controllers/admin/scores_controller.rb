@@ -1,4 +1,5 @@
 class Admin::ScoresController < ApplicationController
+  
   def new
     @score = Score.new
     @genre = Genre.all
