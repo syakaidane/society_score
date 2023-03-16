@@ -117,7 +117,7 @@ ActiveRecord::Schema.define(version: 2023_03_06_071622) do
   create_table "requests", force: :cascade do |t|
     t.integer "customer_id", null: false
     t.string "title", default: "", null: false
-    t.text "body", default: "", null: false
+    t.text "body", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -129,10 +129,10 @@ ActiveRecord::Schema.define(version: 2023_03_06_071622) do
     t.string "composer", default: "", null: false
     t.string "arranger", default: "", null: false
     t.string "grade", default: "", null: false
-
+    t.string "score", default: "", null: false
     t.string "file_format", default: "", null: false
     t.integer "page", null: false
-    t.text "score_caption", default: "", null: false
+    t.text "score_caption", null: false
     t.integer "without_tax", null: false
     t.string "youtube_url", default: ""
     t.datetime "created_at", precision: 6, null: false
