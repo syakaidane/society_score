@@ -1,4 +1,5 @@
 class Admin::ScoresController < ApplicationController
+  before_action :authenticate_admin!
   
   def new
     @score = Score.new
