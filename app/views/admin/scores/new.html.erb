@@ -92,7 +92,7 @@
       <tr>
         <th><%= f.label :file_format, "ファイル形式" %></th>
         <td>
-          <%= f.text_field :file_format, :placeholder => "PDFファイルのみ" %>
+          <%= f.text_field :file_format, :placeholder => "↑(楽譜名).PDF" %>
           <% if @score.errors.include?(:file_format) %>
             <p style="color: red;"><%= @score.errors.full_messages_for(:file_format).first %>
           <% end %>
