@@ -36,7 +36,7 @@
                   <%= link_to score.score_name, score_path(score.id) %>
                 <% end %>
               </td>
-              <td><%= score.genre.genre_name %></td>
+              <td><%= score.genre&.genre_name %></td>
               <td><%= score.without_tax.to_s(:delimited)%></td>
             </tr>
           <% end %>
