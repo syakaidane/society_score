@@ -1,4 +1,5 @@
 # society score
+URL https://society-score.com/
 
 ### サイトテーマ
 管理者（自分）が作った楽譜をPDFもしくはpngファイルとしてアップロードし、
@@ -23,7 +24,12 @@ PDFもしくはpngファイルのため、誰の手にも触られない安全�
 - 楽譜をリクエストしたいとき
 
 ## 設計書
-
+- ER図 https://app.diagrams.net/#G1RSCTsC75rK-lfxUeRWmCMSpUj0C3C3jb
+- テーブル定義書 https://docs.google.com/spreadsheets/d/1grXDO2We9J0PXNAhzfcf5pmc6bKRIt7SUzbQSePCT_Q/edit?usp=sharing
+- 詳細設計 https://docs.google.com/spreadsheets/d/1P86eTuiubQFo9bRtwJTrnYbymKgzk0_aRgN_QO_t6Hs/edit?usp=sharing
+- 実装機能リスト https://docs.google.com/spreadsheets/d/1oKnRn3_9zke1oy-ViBRIvCLz4-Q500xa2RJDAu1lnlU/edit?usp=sharing
+- テスト仕様書 https://docs.google.com/spreadsheets/d/1jBBYehZ4vBZI7SoR_PfzDVgpvSdtaonN/edit?usp=sharing&ouid=101848054480528256844&rtpof=true&sd=true
+- デプロイ手順チェックシート https://docs.google.com/spreadsheets/d/1xgGAWJO7UEf9xtwVftudRkTQc7HcVk-f3UbBAPW-Wbg/edit?usp=sharing
 
 ## 開発環境
 - OS：Linux(CentOS)
@@ -34,3 +40,13 @@ PDFもしくはpngファイルのため、誰の手にも触られない安全�
 
 ## 使用素材
 使用検討中です
+
+## 機能一覧
+- ユーザー登録、ログイン機能(devise)
+- 投稿機能
+- 欲しいものリスト機能
+- 購入機能(購入手続き完了後、ダウンロード可能)
+- ページネーション(kaminari)
+- 検索機能
+- リクエスト機能
+- 
