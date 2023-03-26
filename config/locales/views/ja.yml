@@ -14,11 +14,13 @@ ja:
         password_confirmation: パスワード確認
 
       score:
+        score_image: 画像
         score_name: 楽譜名
         artist_name: アーティスト名
         composer: 作曲者
         arranger: 編曲者
         grade: 難易度
+        score: 楽譜
         file_format: ファイル形式
         page: ページ数
         score_caption: 楽譜説明
@@ -45,3 +47,17 @@ ja:
           fail: "ログインに失敗"
           destroy:
           success: "ログアウト"
+  
+  errors:
+    messages:
+      carrierwave_processing_error: 処理できませんでした
+      carrierwave_integrity_error: は許可されていないファイルタイプです
+      carrierwave_download_error: はダウンロードできません
+      extension_whitelist_error: "%{extension}ファイルのアップロードは許可されていません。アップロードできるファイルタイプ: %{allowed_types}"
+      extension_blacklist_error: "%{extension}ファイルのアップロードは許可されていません。アップロードできないファイルタイプ: %{prohibited_types}"
+      content_type_whitelist_error: "%{content_type}ファイルのアップロードは許可されていません"
+      content_type_blacklist_error: "%{content_type}ファイルのアップロードは許可されていません"
+      rmagick_processing_error: "rmagickがファイルを処理できませんでした。画像を確認してください。エラーメッセージ: %{e}"
+      mini_magick_processing_error: "MiniMagickがファイルを処理できませんでした。画像を確認してください。エラーメッセージ: %{e}"
+      min_size_error: "ファイルを%{min_size}バイト以上のサイズにしてください"
+      max_size_error: "ファイルを%{max_size}バイト以下のサイズにしてください"

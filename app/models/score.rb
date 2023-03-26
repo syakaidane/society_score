@@ -17,6 +17,8 @@ class Score < ApplicationRecord
   validates :page, presence: true
   validates :score_caption, presence: true
   validates :without_tax, presence: true
+  validates :score, presence: true
+  validates :score_image, presence: true
 
   def get_image(width, height)
     unless score_image.attached?

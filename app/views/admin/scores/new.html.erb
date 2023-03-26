@@ -10,7 +10,12 @@
     <table>
       <tr>
         <th><%= f.label :score_image, "画像" %></th>
-        <td><%= f.file_field :score_image, accept: "image/*" %></td>
+        <td>
+          <%= f.file_field :score_image, accept: "image/*" %>
+          <% if @score.errors.include?(:score_image) %>
+            <p style="color: red;"><%= @score.errors.full_messages_for(:score_image).first %>
+          <% end %>
+        </td>
       </tr>
       <tr>
         <th><%= f.label :score_name, "楽譜名" %></th>
@@ -77,12 +82,17 @@
       </tr>
       <tr>
         <th><%= f.label :score, "ファイル" %></th>
-        <td><%= f.file_field :score %></td>
+        <td>
+          <%= f.file_field :score %>
+          <% if @score.errors.include?(:score) %>
+            <p style="color: red;"><%= @score.errors.full_messages_for(:score).first %>
+          <% end %>
+        </td>
       </tr>
       <tr>
         <th><%= f.label :file_format, "ファイル形式" %></th>
         <td>
-          <%= f.text_field :file_format, :placeholder => "ファイル形式" %>
+          <%= f.text_field :file_format, :placeholder => "PDFファイルのみ" %>
           <% if @score.errors.include?(:file_format) %>
             <p style="color: red;"><%= @score.errors.full_messages_for(:file_format).first %>
           <% end %>
