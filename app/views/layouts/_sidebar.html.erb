@@ -11,7 +11,7 @@
           <tr>
             <td>
               <%= link_to scores_path(genre_id: genre.id) do %>
-                <%= genre.genre_name %>
+                <%= genre&.genre_name %>
               <% end %>
             </td>
           </tr>
