@@ -1,7 +1,7 @@
 <div class="container my-5">
 
   <h2>楽譜新規登録</h2>
-
+  
   <%= form_with model: [:admin, @score] do |f| %>
     <% if @score.errors.any? %>
       <%= @score.errors.count %>件のエラーが発生しました
@@ -80,10 +80,12 @@
           <% end %>
         </td>
       </tr>
+      
       <tr>
         <th><%= f.label :score, "ファイル" %></th>
         <td>
           <%= f.file_field :score %>
+          <h6>ファイル名は、「(楽譜名).pdf」としてください。</h6>
           <% if @score.errors.include?(:score) %>
             <p style="color: red;"><%= @score.errors.full_messages_for(:score).first %>
           <% end %>
@@ -92,7 +94,7 @@
       <tr>
         <th><%= f.label :file_format, "ファイル形式" %></th>
         <td>
-          <%= f.text_field :file_format, :placeholder => "↑(楽譜名).PDF" %>
+          <%= f.text_field :file_format, :placeholder => "現在PDFのみ" %>
           <% if @score.errors.include?(:file_format) %>
             <p style="color: red;"><%= @score.errors.full_messages_for(:file_format).first %>
           <% end %>
