@@ -17,7 +17,7 @@
           <td><%= order.created_at.strftime('%Y年/%m月/%d日') %></td>
           <td>
             <% order.order_details.each do |order_detail| %>
-              <%= order_detail.score.score_name %>
+              <%= order_detail.score&.score_name %>
               <br>
             <% end %>
           </td>

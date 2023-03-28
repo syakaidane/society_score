@@ -14,6 +14,20 @@
  *= require_self
  */
  
+html, body { height: 100%;}
+
+
+
+body > footer {
+
+ position: sticky;
+ bottom: 0; /*下に固定*/
+ 
+ top: 100vh;
+ width: 100%;
+
+}
+ 
 .menu-trigger,
 .menu-trigger span {
   display: inline-block;

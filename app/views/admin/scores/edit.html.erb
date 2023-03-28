@@ -56,7 +56,10 @@
       </tr>
       <tr>
         <th><%= f.label :score, "ファイル" %></th>
-        <td><%= f.file_field :score %></td>
+        <td>
+          <%= f.file_field :score %>
+          <h6>ファイル名は、「(楽譜名).pdf」としてください。</h6>
+        </td>
       </tr>
       <tr>
         <th><%= f.label :file_format, "ファイル形式" %></th>
@@ -84,13 +87,17 @@
         <th><%= f.label :youtube_url, "サンプル動画" %></th>
         <td><%= f.text_field :youtube_url, :placeholder => "https://www/youtube.com/", size: 50 %></td>
       </tr>
+      <tr>
+        <th><%= f.label :sale_status, "販売状況" %></th>
+        <td>
+          <%= f.radio_button :sale_status, :true %>
+          <%= f.label :sale_status_sale, "販売中" %>
+          <%= f.radio_button :sale_status, :false %>
+          <%= f.label :sale_status_stop_sale, "販売停止中" %>
+        </td>
+      </tr>
     </table>
     <%= f.submit "変更を保存", class: "btn btn-success my-3" %>
   <% end %>
   
-  <%= link_to admin_score_path(@score.id), method: :delete, "data-confirm" => "本当に削除しますか？" do %>
-    <button type="button" class="btn btn-danger">
-      削除する
-    </button>
-  <% end %>
 </div>

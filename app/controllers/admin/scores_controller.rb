@@ -52,7 +52,7 @@ class Admin::ScoresController < ApplicationController
   private
   
   def score_params
-    params.require(:score).permit(:score_image, :genre_id, :score_name, :artist_name, :composer, :arranger, :grade, :score, :file_format, :page, :score_caption, :without_tax)
+    params.require(:score).permit(:score_image, :genre_id, :score_name, :artist_name, :composer, :arranger, :grade, :score, :file_format, :page, :score_caption, :without_tax, :sale_status, :youtube_url)
   end
   
 end
